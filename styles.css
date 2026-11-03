@@ -1,0 +1,141 @@
+:root{
+  --bg:#0b0d14; --surface:#121622; --surface2:#171c2b; --border:#242b3d;
+  --fg:#e8ebf5; --muted:#8a93ad; --accent:#8b5cf6; --accent2:#a78bfa;
+  --benchmark:#2dd4bf;
+  --success:#34d399; --warning:#fbbf24; --error:#f87171; --info:#60a5fa;
+  --c1:#8b5cf6; --c2:#22d3ee; --c3:#f472b6; --c4:#34d399; --c5:#fbbf24; --c6:#f87171;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--fg);font:14px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+#app{display:grid;grid-template-columns:232px 1fr;min-height:100%}
+#nav{border-right:1px solid var(--border);background:var(--surface);padding:16px 12px;display:flex;flex-direction:column;gap:2px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{font-size:16px;letter-spacing:.2px;padding:6px 10px 16px;color:var(--fg)}
+.brand b{color:var(--accent)}
+.brand .mark{display:inline-block;width:12px;height:12px;border-radius:3px;background:linear-gradient(135deg,var(--accent),var(--c2));margin-right:8px;vertical-align:-1px}
+#nav-items{display:flex;flex-direction:column;gap:1px}
+.navgroup{font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);opacity:.75;padding:14px 10px 4px}
+.navgroup:first-child{padding-top:4px}
+.navlink{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:8px;color:var(--muted);text-decoration:none;font-size:13px}
+.navlink:hover{background:var(--surface2);color:var(--fg)}
+.navlink.active{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--fg)}
+.navlink .num{font:11px var(--mono);color:var(--accent2);width:14px;text-align:right;opacity:.8}
+.health{margin-top:auto;padding:10px;font:11px var(--mono);color:var(--muted);border-top:1px solid var(--border)}
+.health .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--success);margin-right:6px;vertical-align:0}
+.health.off .dot{background:var(--warning)}
+.health.bad .dot{background:var(--error)}
+#main{padding:26px 34px 80px;max-width:1180px}
+.loading{color:var(--muted);padding:40px}
+h1{font-size:22px;margin:0 0 4px}
+h2{font-size:16px;margin:26px 0 10px}
+h3{font-size:13px;margin:18px 0 8px;color:var(--fg);text-transform:uppercase;letter-spacing:.6px}
+.sub{color:var(--muted);margin:0 0 22px;max-width:70ch}
+a{color:var(--accent2)}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:960px){.g2,.g3,.g4{grid-template-columns:1fr 1fr}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px}
+.card.tight{padding:12px}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.row.top{align-items:flex-start}
+.spread{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.kpi .k{font:11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.kpi .v{font-size:24px;font-weight:650;margin-top:4px}
+.kpi .v.pos{color:var(--success)}.kpi .v.neg{color:var(--error)}
+/* projections read purple (the action color); green is reserved for actual portfolio money */
+.kpi .v.proj{color:var(--accent2)}
+.kpi .s{font-size:12px;color:var(--muted);margin-top:2px}
+.chip{display:inline-flex;align-items:center;gap:6px;font:11px var(--mono);padding:3px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted);background:var(--surface2);white-space:nowrap}
+.chip.ok,.chip.valid,.chip.effect{color:var(--success);border-color:color-mix(in srgb,var(--success) 40%,var(--border))}
+.chip.manipulated,.chip.breached,.chip.refuted,.chip.inconclusive{color:var(--error);border-color:color-mix(in srgb,var(--error) 40%,var(--border))}
+.chip.underpowered,.chip.watch,.chip.stale{color:var(--warning);border-color:color-mix(in srgb,var(--warning) 40%,var(--border))}
+.chip.running,.chip.in_design,.chip.continue{color:var(--info);border-color:color-mix(in srgb,var(--info) 40%,var(--border))}
+.chip.accent{color:var(--accent2);border-color:color-mix(in srgb,var(--accent) 45%,var(--border))}
+/* Network benchmark is external context, not measured evidence: it gets its own hue, never the severity colors or the action purple. */
+.chip.benchmark{color:var(--benchmark);border-color:color-mix(in srgb,var(--benchmark) 45%,var(--border))}
+.chiprow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:11px}
+.chip.opt_in{color:var(--benchmark);border-color:color-mix(in srgb,var(--benchmark) 40%,var(--border))}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:var(--muted);font:11px var(--mono);text-transform:uppercase;letter-spacing:.5px;padding:8px 10px;border-bottom:1px solid var(--border)}
+td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:middle}
+tr.clk{cursor:pointer}tr.clk:hover td{background:var(--surface2)}
+.num,td.num,.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.right{text-align:right}
+.bar{height:7px;border-radius:4px;background:var(--surface2);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--accent)}
+/* opportunity step-down: bars share the NOI scale, longest to shortest */
+.wsteps{display:flex;flex-direction:column;gap:9px}
+.wsteps .lrow{display:flex;align-items:center;gap:10px}
+.wsteps .ll{width:170px;flex:none;text-align:right}
+.wsteps .lt{flex:1;height:12px;border-radius:3px;background:var(--surface)}
+.wsteps .lb{display:block;height:100%;border-radius:3px}
+.wsteps .lv{white-space:nowrap;min-width:210px}
+/* breathing room where a card directly follows the KPI grid */
+.grid.g4+.card{margin-top:16px}
+.muted{color:var(--muted)}
+.tiny{font-size:12px}.micro{font-size:11px}
+.mt{margin-top:14px}.mb{margin-bottom:14px}
+.pill{font:11px var(--mono);padding:2px 7px;border-radius:6px;background:var(--surface2);border:1px solid var(--border)}
+.hint{font-size:12px;color:var(--muted);max-width:70ch}
+input[type=text],textarea,select{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--fg);border-radius:8px;padding:9px 11px;font:13px var(--sans)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+label.fl{display:block;font:11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+button{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:9px 14px;font:13px var(--sans);cursor:pointer}
+button.ghost{background:transparent;border:1px solid var(--border);color:var(--fg)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.btnrow{display:flex;gap:10px;margin-top:12px}
+input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;vertical-align:-2px}
+.badge{position:fixed;right:18px;bottom:18px;background:var(--warning);color:#241a02;font:12px var(--mono);padding:8px 12px;border-radius:8px;box-shadow:0 8px 30px #0009;z-index:50;display:none}
+.badge.show{display:block}
+.skel{background:linear-gradient(90deg,var(--surface2),var(--border),var(--surface2));background-size:200% 100%;animation:sk 1.1s infinite;border-radius:8px;height:14px;margin:6px 0}
+@keyframes sk{to{background-position:-200% 0}}
+svg{display:block;max-width:100%}
+.svgwrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px}
+.tok-fg{fill:var(--fg)}.tok-muted{fill:var(--muted)}.tok-accent{fill:var(--accent)}
+.ladder{list-style:none;margin:0;padding:0}
+.ladder li{display:flex;gap:12px;padding:12px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px;background:var(--surface)}
+.ladder li.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--surface))}
+.ladder li.rej{opacity:.55}
+.ladder .rk{font:13px var(--mono);color:var(--accent2);width:22px}
+.ladder .why{font-size:12px;color:var(--muted);margin-top:3px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font:12px var(--mono);color:var(--muted);margin-top:8px}
+.legend .sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs a{padding:6px 12px;border-radius:8px;border:1px solid var(--border);color:var(--muted);text-decoration:none;font:12px var(--mono)}
+.tabs a.active{color:var(--fg);border-color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.callout{border-left:3px solid var(--accent);background:var(--surface2);padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px}
+.callout.warn{border-color:var(--warning)}
+.callout.err{border-color:var(--error)}
+.callout.ok{border-color:var(--success)}
+/* one rule so explain cards can never drift from each other: .explain glosses
+   hide in investor view; .note glosses are data states and always render */
+.callout.explain,.hint.explain,.hint.note{background:var(--surface2);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;color:var(--fg);max-width:85ch}
+.action-card{background:var(--surface2);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:10px 14px;margin-top:12px;max-width:85ch}
+.action-card .todo{font:700 12px var(--mono);letter-spacing:.04em;color:var(--accent2)}
+.action-card p{margin:4px 0 0;font-size:13px;color:var(--fg)}
+.action-card .opp{font-size:13px;color:var(--fg)}
+.action-card .opp b{color:var(--accent2)}
+/* forecast line: same purple vocabulary as the measured line, but dashed-edge to read "projection" */
+.action-card .proj{font-size:13px;color:var(--fg);border-left:2px dashed var(--accent2);padding-left:10px}
+.action-card .proj b{color:var(--accent2)}
+.split{display:grid;grid-template-columns:1fr 360px;gap:16px}
+@media(max-width:1080px){.split{grid-template-columns:1fr}}
+.wrow{display:grid;grid-template-columns:90px 1fr 44px;gap:10px;align-items:center;margin:8px 0}
+.wrow .nm{font:12px var(--mono);color:var(--muted)}
+.wrow .pv{font:12px var(--mono);text-align:right}
+.spark{display:inline-block;vertical-align:middle}
+.dotc{display:inline-block;width:9px;height:9px;border-radius:50%}
+code{font:12px var(--mono);background:var(--surface2);padding:1px 6px;border-radius:5px;color:var(--accent2)}
+/* demo-explanation visibility toggle */
+.eyebtn{display:inline-flex;align-items:center;gap:6px;margin-left:10px;padding:6px 9px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--accent);cursor:pointer;vertical-align:middle}
+.eyebtn.off{color:var(--muted)}
+.eyebtn svg{width:17px;height:17px;display:block}
+.eyebtn .lbl{font:11px var(--mono)}
+body.explain-off .explain{display:none !important}
+.rocket-card{border-color:color-mix(in srgb,var(--accent) 55%,var(--border))}
+.mrow{margin:9px 0}
+.drift-action{font-size:12px;color:var(--accent2);margin-top:3px}
+.investor-only{display:none !important}
+body.explain-off .investor-only{display:inline !important}
